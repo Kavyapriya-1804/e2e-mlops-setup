@@ -1,0 +1,4 @@
+[core]
+    remote = origin
+['remote "origin"']
+    url = https://dagshub.com/kavyajg1804/e2e-mlops-setup.dvc
