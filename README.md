@@ -44,4 +44,9 @@ sys.path.insert(0, str(PROJECT_ROOT))
         2. FeatureView
         3. Fields
     2. we got offline store(training data), online store(low latency inferencing), registry db (meta data from definitions.py)
+3. Model Training
+    1. Get Model URI from logs (eg: models:/m-f62614b649314420ae86474de8f97c84)
+
+
+
 

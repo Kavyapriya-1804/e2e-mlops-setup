@@ -10,3 +10,5 @@ sqlalchemy
 psycopg[binary]
 psycopg_pool
 pytest
+mlflow
+psycopg2-binary

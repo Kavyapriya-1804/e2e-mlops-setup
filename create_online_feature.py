@@ -23,6 +23,9 @@ class CreateOnlineFeatures:
 
         return self._entity_df
     
+    def get_entity_df(self):
+        return self._entity_df
+    
     def get_historical_data(self, features) -> pd.DataFrame:
         historical_df = self._feature_store.get_historical_features(self._entity_df, features)
 
@@ -85,7 +88,7 @@ if __name__ == "__main__":
 
 
     start_date = parse_datetime(args.start_date) if args.start_date else None
-    end_date = parse_datetime(args.end_date) if args.end_date else None
+    end_date = parse_datetime(args.end_date) if args.end_date else datetime.now()
 
     create_online_feature.materialize(
         incremental=args.increment, 
