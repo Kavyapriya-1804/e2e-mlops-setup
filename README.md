@@ -28,3 +28,25 @@ PROJECT_ROOT = Path().resolve().parents[1]
 print(PROJECT_ROOT)
 sys.path.insert(0, str(PROJECT_ROOT))
 
+## TIPS:
+1. to export env in terminal => export $(cat .env)
+
+## FACETS:
+1. Data Pre processing
+    1. Data Ingestion
+    2. Data Inspection
+    3. Missing values handled
+    4. Data Analysis
+    5. Data Encoding
+2. Feature Store
+    1. Source data features creation
+        1. Entity (also define File source for Entity)
+        2. FeatureView
+        3. Fields
+    2. we got offline store(training data), online store(low latency inferencing), registry db (meta data from definitions.py)
+3. Model Training
+    1. Get Model URI from logs (eg: models:/m-f62614b649314420ae86474de8f97c84)
+
+
+
+
