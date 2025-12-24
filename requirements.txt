@@ -5,3 +5,8 @@ seaborn
 matplotlib
 scikit-learn
 importlib
+feast
+sqlalchemy
+psycopg[binary]
+psycopg_pool
+pytest
