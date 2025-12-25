@@ -61,6 +61,7 @@ sys.path.insert(0, str(PROJECT_ROOT))
     5. containerize the server
 5. Model Monitoring
     1. Create workspace -> project -> report -> dashboards ( to see in UI=> evidently ui --workspace "House Price Monitoring Workspace")
+6. CI CD
 
 
 ## BENTO useful commands
