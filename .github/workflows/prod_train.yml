@@ -1,6 +1,13 @@
 name: mlops ci
 
-on: [push]
+on: 
+  push:
+    branches:
+      - main
+      - ci-cd
+  pull_request: 
+    branches:
+      - main
 
 jobs: 
   train-model:
