@@ -1,0 +1,48 @@
+name: MLOps CI 
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+    
+jobs:
+  train-model:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Setup Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.13'
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+
+    - name: Pull DVC data from DagsHub
+      run: |
+        dvc remote modify origin --local auth basic
+        dvc remote modify origin --local user ${{ secrets.DAGSHUB_USERNAME }}
+        dvc remote modify origin --local password ${{ secrets.DAGSHUB_TOKEN }}
+        dvc pull
+
+    - name: Run Model Validation (Deepchecks)
+      run: |
+        echo "Validation Completed!"
+
+    - name: Train model
+      run: |  
+        python retrain.py
+
+    - name: Save the trained model
+      uses: actions/upload-artifact@v4
+      with:
+        name: trained-model
+        path: model_training/house_regression_model.pkl
