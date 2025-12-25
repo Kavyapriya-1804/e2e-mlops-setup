@@ -45,7 +45,14 @@ sys.path.insert(0, str(PROJECT_ROOT))
         3. Fields
     2. we got offline store(training data), online store(low latency inferencing), registry db (meta data from definitions.py)
 3. Model Training
-    1. Get Model URI from logs (eg: models:/m-f62614b649314420ae86474de8f97c84)
+    1. Choose the best algorithm ( Classification/ Regression/ Clustering )
+    2. Choose best hyper parameters ( eg: with GridSearchCV )
+    3. Train the model
+    4. Test model
+    5. Record metrics
+    6. Configure MLFlow to record the experiment (Artifacts, logs etc.,)
+    7. Register the best performing model
+    8. Get Model URI from logs (eg: models:/m-f62614b649314420ae86474de8f97c84)
 
 
 
