@@ -52,8 +52,24 @@ sys.path.insert(0, str(PROJECT_ROOT))
     5. Record metrics
     6. Configure MLFlow to record the experiment (Artifacts, logs etc.,)
     7. Register the best performing model
-    8. Get Model URI from logs (eg: models:/m-f62614b649314420ae86474de8f97c84)
+    8. Get Model URI from logs (eg: models:/m-f62614b649314420ae86474de8f97c84;)
+4. Model Serving
+    1. write service logics
+    2. load model (would create something like bentoml model: house_price_model:6bzww2xbmcqla2si) \\ house_price_model:4v77kmhbms7o42si
+    3. serve model (http://localhost:3000)
+    4. build the server
+    5. containerize the server
 
 
+## BENTO useful commands
+* Deploy to BentoCloud:
+    $ bentoml deploy house_service:5hsejhxbm2ine2si -n ${DEPLOYMENT_NAME}
 
+* Update an existing deployment on BentoCloud:
+    $ bentoml deployment update --bento house_service:5hsejhxbm2ine2si ${DEPLOYMENT_NAME}
 
+* Containerize your Bento with `bentoml containerize`:
+    $ bentoml containerize house_service:5hsejhxbm2ine2si 
+
+* Push to BentoCloud with `bentoml push`:
+    $ bentoml push house_service:5hsejhxbm2ine2si 
