@@ -1,7 +1,9 @@
-# e2e-mlops-setup
+# E2E-MLOps-setup
 
-STEPS:
-## dvc new initial setup
+DagsHub URL: https://dagshub.com/kavyajg1804/e2e-mlops-setup
+
+## Initial DVC Setup
+```bash
 dvc init
 dvc remote add origin https://dagshub.com/kavyajg1804/e2e-mlops-setup.dvc
 dvc remote default origin
@@ -12,14 +14,58 @@ dvc remote modify origin --local password "YOUR_TOKEN"
 git add .
 git commit -m "data-versioning-setup-completed"
 git push -u origin main
+```
 
+## MLOps Facets
+1. **Data Preprocessing**
+   - Data Ingestion
+   - Data Inspection
+   - Missing Values Handling
+   - Data Analysis
+   - Data Encoding
 
-<!-- to reload classes in ipynb -->
+2. **Feature Store**
+   - Source Data Features Creation
+     - Entity (define File source for Entity)
+     - FeatureView
+     - Fields
+   - Stores: Offline (training data), Online (low-latency inference), Registry DB (metadata from definitions.py)
+
+3. **Model Training**
+   - Choose Algorithm (Classification/Regression/Clustering)
+   - Hyperparameter Tuning (e.g., GridSearchCV)
+   - Train Model
+   - Test Model
+   - Record Metrics
+   - Configure MLflow for Experiments (Artifacts, Logs, etc.)
+   - Register Best Model
+   - Get Model URI (e.g., models:/m-f62614b649314420ae86474de8f97c84)
+
+4. **Model Serving**
+   - Write Service Logic
+   - Load Model (creates BentoML model, e.g., house_price_model:6bzww2xbmcqla2si)
+   - Serve Model (http://localhost:3000)
+   - Build Server
+   - Containerize Server
+
+5. **Model Monitoring**
+   - Create Workspace → Project → Report → Dashboards
+   - View UI: `evidently ui --workspace "House Price Monitoring Workspace"`
+
+6. **CI/CD**
+   - Define Workflow in `.github/workflows/*.yml`
+   - Optional: Branch Protection Rules for PR Validation
+
+## Useful Code Snippets
+### Reload Classes in Notebook
+```python
 import importlib
 import model.house_model
 importlib.reload(model.house_model)
+```
 
-<!-- to reconnect paths in ipynb -->
+### Reconnect Paths in Notebook
+```python
 import sys
 from pathlib import Path
 import os
@@ -27,52 +73,13 @@ import os
 PROJECT_ROOT = Path().resolve().parents[1]
 print(PROJECT_ROOT)
 sys.path.insert(0, str(PROJECT_ROOT))
+```
 
-## TIPS:
-1. to export env in terminal => export $(cat .env)
+## Tips
+- To export env in terminal: `export $(cat .env)`
 
-## FACETS:
-1. Data Pre processing
-    1. Data Ingestion
-    2. Data Inspection
-    3. Missing values handled
-    4. Data Analysis
-    5. Data Encoding
-2. Feature Store
-    1. Source data features creation
-        1. Entity (also define File source for Entity)
-        2. FeatureView
-        3. Fields
-    2. we got offline store(training data), online store(low latency inferencing), registry db (meta data from definitions.py)
-3. Model Training
-    1. Choose the best algorithm ( Classification/ Regression/ Clustering )
-    2. Choose best hyper parameters ( eg: with GridSearchCV )
-    3. Train the model
-    4. Test model
-    5. Record metrics
-    6. Configure MLFlow to record the experiment (Artifacts, logs etc.,)
-    7. Register the best performing model
-    8. Get Model URI from logs (eg: models:/m-f62614b649314420ae86474de8f97c84;)
-4. Model Serving
-    1. write service logics
-    2. load model (would create something like bentoml model: house_price_model:6bzww2xbmcqla2si)
-    3. serve model (http://localhost:3000)
-    4. build the server
-    5. containerize the server
-5. Model Monitoring
-    1. Create workspace -> project -> report -> dashboards ( to see in UI=> evidently ui --workspace "House Price Monitoring Workspace")
-6. CI CD
-
-
-## BENTO useful commands
-* Deploy to BentoCloud:
-    $ bentoml deploy house_service:5hsejhxbm2ine2si -n ${DEPLOYMENT_NAME}
-
-* Update an existing deployment on BentoCloud:
-    $ bentoml deployment update --bento house_service:5hsejhxbm2ine2si ${DEPLOYMENT_NAME}
-
-* Containerize your Bento with `bentoml containerize`:
-    $ bentoml containerize house_service:5hsejhxbm2ine2si 
-
-* Push to BentoCloud with `bentoml push`:
-    $ bentoml push house_service:5hsejhxbm2ine2si 
+## BentoML Commands
+- Deploy to BentoCloud: `bentoml deploy house_service:5hsejhxbm2ine2si -n ${DEPLOYMENT_NAME}`
+- Update Deployment: `bentoml deployment update --bento house_service:5hsejhxbm2ine2si ${DEPLOYMENT_NAME}`
+- Containerize: `bentoml containerize house_service:5hsejhxbm2ine2si`
+- Push to BentoCloud: `bentoml push house_service:5hsejhxbm2ine2si` 
