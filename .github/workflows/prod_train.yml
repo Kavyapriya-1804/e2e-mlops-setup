@@ -13,6 +13,7 @@ jobs:
 
   test-model:
     runs-on: ubuntu-latest
+    needs: train-model  # This ensures test-model runs after train-model completes successfully
 
     steps:
     - name: test ci-cd
