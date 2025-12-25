@@ -21,7 +21,7 @@ class TrainModel():
         return X_hist
  
     def predict_new_data(self):
-        path = os.getcwd() + "//serving//feedback.csv"
+        path = os.getcwd() + "//model_serving//feedback.csv"
         #path = os.path.join(os.path.abspath(os.path.join(os.getcwd(), os.path.pardir)), "serving/feedback.csv")
         X_new = pd.read_csv(path)
         X_new.drop(["event_timestamp", "prediction"], axis=1, inplace=True)
