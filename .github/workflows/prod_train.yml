@@ -1,0 +1,12 @@
+name: mlops ci
+
+on: [push]
+
+jobs: 
+  train-model:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: test ci cd
+      run: |
+        echo "ci cd setup successful"
