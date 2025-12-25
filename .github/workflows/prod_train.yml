@@ -7,6 +7,14 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: test ci cd
+    - name: train ci-cd
       run: |
-        echo "ci cd setup successful"
+        echo "train ci-cd setup successful"
+
+  test-model:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: test ci-cd
+      run: |
+        echo "test ci-cd setup successful"
