@@ -1,0 +1,21 @@
+service: "model_serving.service:HouseService"
+labels:
+    owner: kavya
+    stage: dev
+include:
+  - "*.py"
+python:
+    packages:
+    - scikit-learn
+    - pandas
+    - numpy
+    - mlflow
+models:
+  - "house_price_model:latest"
+  - tag: "house_price_model:4v77kmhbms7o42si"
+    alias: "house_alias"
+docker:
+  system_packages:
+    - git
+  python_version: "3.13"
+  distro: debian
