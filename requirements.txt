@@ -12,6 +12,7 @@ psycopg_pool
 pytest
 mlflow
 psycopg2-binary
-bentoml=1.4.30
+bentoml==1.4.30
 torch 
 transformers
+evidently

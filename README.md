@@ -55,10 +55,12 @@ sys.path.insert(0, str(PROJECT_ROOT))
     8. Get Model URI from logs (eg: models:/m-f62614b649314420ae86474de8f97c84;)
 4. Model Serving
     1. write service logics
-    2. load model (would create something like bentoml model: house_price_model:6bzww2xbmcqla2si) \\ house_price_model:4v77kmhbms7o42si
+    2. load model (would create something like bentoml model: house_price_model:6bzww2xbmcqla2si)
     3. serve model (http://localhost:3000)
     4. build the server
     5. containerize the server
+5. Model Monitoring
+    1. Create workspace -> project -> report -> dashboards ( to see in UI=> evidently ui --workspace "House Price Monitoring Workspace")
 
 
 ## BENTO useful commands
